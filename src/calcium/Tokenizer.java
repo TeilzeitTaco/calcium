@@ -87,8 +87,8 @@ public final class Tokenizer {
 	}
 	
 	private static LinkedList<String> splitCommandIntoStringTokens(String command) {
-		var stringTokenQueue = new LinkedList<String>();
-		var matcher = pattern.matcher(command);
+		final var stringTokenQueue = new LinkedList<String>();
+		final var matcher = pattern.matcher(command);
 	    while (matcher.find())
 	    	stringTokenQueue.add(matcher.group());
 		

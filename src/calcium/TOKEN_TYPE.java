@@ -4,7 +4,9 @@ import calcium.operators.*;
 
 
 public enum TOKEN_TYPE {
-	// The initialization order here is significant
+	// The initialization order here is significant,
+	// as these types are also referenced in the operator
+	// constructors and are null if they aren't already initialized.
 	T_BRACE_RIGHT(null),
 	T_BRACE_LEFT(null),
 	

@@ -8,6 +8,12 @@ import calcium.TOKEN_TYPE;
 import calcium.Token;
 
 
+/**
+ * Operator welcher die [TOKEN_TYPE]s links und rechts
+ * von ihm überprüft.
+ * 
+ * @author SeiJ
+ */
 public abstract class DyadicOperator implements Operator {
 	private final TOKEN_TYPE leftConstraint, rightConstraint;
 	private LinkedList<Token> tokens;
