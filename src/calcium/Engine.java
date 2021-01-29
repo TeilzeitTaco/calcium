@@ -3,6 +3,8 @@ package calcium;
 import calcium.exceptions.QuitException;
 import calcium.functions.Function;
 import calcium.functions.UserDefinedFunctionFactory;
+import calcium.functions.misc.IsPrimeFunction;
+import calcium.functions.misc.RoundFunction;
 import calcium.functions.misc.SquareRootFunction;
 import calcium.functions.trigonometry.CosineFunction;
 import calcium.functions.trigonometry.SineFunction;
@@ -19,7 +21,10 @@ public class Engine {
 		parser.registerFunction(new SineFunction());
 		parser.registerFunction(new CosineFunction());
 		parser.registerFunction(new TangentFunction());
+		
 		parser.registerFunction(new SquareRootFunction());
+		parser.registerFunction(new RoundFunction());
+		parser.registerFunction(new IsPrimeFunction());
 	}
 	
 	public void executeStatement(final String command) throws QuitException {
