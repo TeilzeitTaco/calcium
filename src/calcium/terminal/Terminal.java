@@ -33,7 +33,7 @@ public final class Terminal {
 			}
 			
 		} catch(QuitException e) {
-			System.out.println("\nGood night...\n");
+			System.out.println("\nGood night...");
 			scanner.close();
 		}
 	}
