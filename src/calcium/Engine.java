@@ -42,6 +42,9 @@ public class Engine {
 		else if ("verbose".equals(lowercaseCommand))
 			parser.setVerbose(true);
 		
+		else if ("quiet".equals(lowercaseCommand))
+			parser.setVerbose(false);
+		
 		else if ("vars".equals(lowercaseCommand)) {
 			var formatter = new MapFormatter<String, Fraction>(parser.getVariables());
 			System.out.println(formatter);

@@ -3,6 +3,8 @@ package calcium.functions;
 import java.util.List;
 import calcium.Fraction;
 import calcium.Parser;
+import calcium.TOKEN_TYPE;
+import calcium.Token;
 import calcium.Tokens;
 
 
@@ -34,8 +36,12 @@ public class UserDefinedFunction implements Function {
 		
 		var position = parser.getPosition();
 		var parserTokens = parser.getTokens();
+		
+		// Functions resolve within braces
+		parserTokens.add(position++, new Token(TOKEN_TYPE.T_BRACE_LEFT));
 		for (var token : functionTokens)
 			parserTokens.add(position++, token);
+		parserTokens.add(position, new Token(TOKEN_TYPE.T_BRACE_RIGHT));
 	}
 	
 	@Override

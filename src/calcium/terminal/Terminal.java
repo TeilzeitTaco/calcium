@@ -22,6 +22,7 @@ public final class Terminal {
 				"|  * vars    - Show all variables              |\n" +
 				"|  * funcs   - Show registered functions       |\n" +
 				"|  * verbose - Show expansion                  |\n" +
+				"|  * quiet   - Do not show expansion           |\n" +
 				"|  * quit    - Quit the program                |\n" +
 				"+----------------------------------------------+\n");
 		
