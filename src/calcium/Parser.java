@@ -17,7 +17,7 @@ public final class Parser {
 	private boolean changed, verbose;
 	private int position;
 	
-	public LinkedList<Token> getTokens() {
+	public Tokens getTokens() {
 		return tokens;
 	}
 	

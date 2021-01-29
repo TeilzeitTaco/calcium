@@ -34,4 +34,12 @@ public enum TOKEN_TYPE {
 	public String getLiteral() {
 		return literal;
 	}
+	
+	public boolean isMathOperator() {
+		return !(
+				this == T_BRACE_RIGHT ||
+				this == T_BRACE_LEFT ||
+				this == T_VALUE ||
+				this == T_NAME);
+	}
 }

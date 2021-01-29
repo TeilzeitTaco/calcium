@@ -62,16 +62,14 @@ public final class Tokenizer {
 					// A "digits|digits" fraction literal
 					long z = Long.valueOf(stringToken);
 					long n = Long.valueOf(maybeDigitsAfterComma);
-					var frac = Fraction._new(z, n);
+					var newFraction = Fraction._new(z, n);
 					
-					tokenQueue.add(new Token(TOKEN_TYPE.T_VALUE, frac));
+					tokenQueue.add(new Token(TOKEN_TYPE.T_VALUE, newFraction));
 					removeOperatorAndDigits();
 					return;
 				}
 			}
 		}
-		
-		// TODO: Monadic -
 
 		// A "digits" integer literal
 		final var d = Double.valueOf(stringToken);
