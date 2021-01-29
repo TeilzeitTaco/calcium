@@ -12,7 +12,7 @@ import calcium.functions.trigonometry.TangentFunction;
 import calcium.terminal.MapFormatter;
 
 
-public class Engine {
+public final class Engine {
 	private final Parser parser = new Parser();
 	private final Tokenizer tokenizer = new Tokenizer();
 	private boolean showResultAsDecimal;

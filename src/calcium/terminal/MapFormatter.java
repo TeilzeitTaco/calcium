@@ -5,10 +5,9 @@ import java.util.Collections;
 import java.util.Map;
 
 
-public class MapFormatter<K, V> {
+public final class MapFormatter<K, V> {
 	private final String formattedString;
 	private final int longestValueLength, longestKeyLength;
-	
 	
 	public MapFormatter(Map<K, V> map) {		
 		longestKeyLength = Math.max(6, getLongestLength(map.keySet()));

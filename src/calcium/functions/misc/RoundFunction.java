@@ -9,7 +9,7 @@ import calcium.Token;
 import calcium.functions.BuiltinFunction;
 
 
-public class RoundFunction extends BuiltinFunction {
+public final class RoundFunction extends BuiltinFunction {
 	@Override
 	public int getParameterCount() {
 		return 1;

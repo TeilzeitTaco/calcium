@@ -8,7 +8,7 @@ import calcium.Token;
 import calcium.Tokens;
 
 
-public class UserDefinedFunction implements Function {
+public final class UserDefinedFunction implements Function {
 	private final List<String> parameterNames;
 	private final Tokens functionTokens;
 	private final String name;

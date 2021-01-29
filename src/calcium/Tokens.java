@@ -3,7 +3,7 @@ package calcium;
 import java.util.LinkedList;
 
 
-public class Tokens extends LinkedList<Token> {
+public final class Tokens extends LinkedList<Token> {
 	private static final long serialVersionUID = 1L;
 
 	@Override

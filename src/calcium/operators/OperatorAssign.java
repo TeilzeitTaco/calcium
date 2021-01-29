@@ -6,7 +6,7 @@ import calcium.TOKEN_TYPE;
 import calcium.Token;
 
 
-public class OperatorAssign extends DyadicOperator {
+public final class OperatorAssign extends DyadicOperator {
 	public OperatorAssign() {
 		super(TOKEN_TYPE.T_NAME, TOKEN_TYPE.T_VALUE);
 	}

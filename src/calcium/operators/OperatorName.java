@@ -5,7 +5,7 @@ import calcium.TOKEN_TYPE;
 import calcium.Token;
 
 
-public class OperatorName implements Operator {
+public final class OperatorName implements Operator {
 	@Override
 	public boolean onPassOver(int position, Parser parser) {
 		// Don't break assignments like "x = (10 + 7)"

@@ -9,7 +9,7 @@ import calcium.Token;
 import calcium.functions.BuiltinFunction;
 
 
-public class IsPrimeFunction extends BuiltinFunction {
+public final class IsPrimeFunction extends BuiltinFunction {
 	@Override
 	public int getParameterCount() {
 		return 1;
