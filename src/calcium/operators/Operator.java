@@ -4,5 +4,5 @@ import calcium.Parser;
 
 
 public interface Operator {
-	public void onPassOver(int position, Parser parser);
+	public boolean onPassOver(int position, Parser parser);
 }

@@ -11,7 +11,10 @@ import java.util.regex.Pattern;
  * @author SeiJ
  */
 public final class Tokenizer {
-	private static final Pattern pattern = Pattern.compile("(\\d+|[A-Za-z]+|.)");
+	private static final String nameRegex = "[A-Za-z][A-Za-z0-9]*";
+	private static final String digitsRegex = "\\d+";
+	private static final Pattern pattern = Pattern.compile("(" + digitsRegex + "|" + nameRegex + "|.)");
+	
 	private LinkedList<String> stringTokenQueue;
 	private LinkedList<Token> tokenQueue;
 	
@@ -45,10 +48,10 @@ public final class Tokenizer {
 			else if ("=".equals(stringToken))
 				tokenQueue.add(new Token(TOKEN_TYPE.T_ASSIGN));
 			
-			else if (stringToken.matches("[A-Za-z]+"))
+			else if (stringToken.matches(nameRegex))
 				tokenQueue.add(new Token(TOKEN_TYPE.T_NAME, stringToken));
 			
-			else if (stringToken.matches("\\d+"))
+			else if (stringToken.matches(digitsRegex))
 				processNumericLiteral(stringToken);
 			
 			else throw new IllegalArgumentException("Tokenizer Error: \"%s\"".formatted(stringToken));
