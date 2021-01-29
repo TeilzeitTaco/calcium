@@ -14,6 +14,7 @@ public enum TOKEN_TYPE {
 	T_NAME("", new OperatorName()),
 	T_ASSIGN("=", new OperatorAssign()),
 	
+	T_POW("^", new OperatorPow()),
 	T_ADD("+", new OperatorAdd()),
 	T_SUB("-", new OperatorSub()), 
 	T_DIV("/", new OperatorDiv()),
