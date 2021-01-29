@@ -12,8 +12,9 @@ import java.util.regex.Pattern;
  */
 public final class Tokenizer {
 	private static final String nameRegex = "[A-Za-z][A-Za-z0-9]*";
-	private static final String digitsRegex = "\\d+";
-	private static final Pattern pattern = Pattern.compile("(" + digitsRegex + "|" + nameRegex + "|.)");
+	private static final String singedDigitsRegex = "(\\+|-)?\\d+";
+	private static final String unsignedDigitsRegex = "\\d+";
+	private static final Pattern pattern = Pattern.compile("(" + singedDigitsRegex + "|" + nameRegex + "|.)");
 	
 	private LinkedList<String> stringTokenQueue;
 	private Tokens tokenQueue;
@@ -37,7 +38,7 @@ public final class Tokenizer {
 			if (stringToken.matches(nameRegex))
 				tokenQueue.add(new Token(TOKEN_TYPE.T_NAME, stringToken));
 			
-			else if (stringToken.matches(digitsRegex))
+			else if (stringToken.matches(singedDigitsRegex))
 				processNumericLiteral(stringToken);
 			
 			else throw new IllegalArgumentException("Tokenizer Error: \"%s\"".formatted(stringToken));
@@ -51,7 +52,7 @@ public final class Tokenizer {
 			final var maybeOperator = stringTokenQueue.get(0);
 			final var maybeDigitsAfterComma = stringTokenQueue.get(1);
 			
-			if (maybeDigitsAfterComma.matches("\\d+")) {						
+			if (maybeDigitsAfterComma.matches(unsignedDigitsRegex)) {						
 				if (".".equals(stringTokenQueue.get(0))) {
 					// A "digits.digits" decimal literal
 					stringToken += "." + maybeDigitsAfterComma;
@@ -69,6 +70,8 @@ public final class Tokenizer {
 				}
 			}
 		}
+		
+		// TODO: Monadic -
 
 		// A "digits" integer literal
 		final var d = Double.valueOf(stringToken);
