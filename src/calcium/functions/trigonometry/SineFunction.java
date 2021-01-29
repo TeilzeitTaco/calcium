@@ -1,7 +1,7 @@
-package calcium.functions;
+package calcium.functions.trigonometry;
 
 
-public class SineFunction extends TrigonometricFunctions {
+public final class SineFunction extends TrigonometricFunction {
 	@Override
 	public String getName() {
 		return "sin";

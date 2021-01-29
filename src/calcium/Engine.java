@@ -1,11 +1,12 @@
 package calcium;
 
 import calcium.exceptions.QuitException;
-import calcium.functions.CosineFunction;
 import calcium.functions.Function;
-import calcium.functions.SineFunction;
-import calcium.functions.TangentFunction;
+import calcium.functions.SquareRootFunction;
 import calcium.functions.UserDefinedFunctionFactory;
+import calcium.functions.trigonometry.CosineFunction;
+import calcium.functions.trigonometry.SineFunction;
+import calcium.functions.trigonometry.TangentFunction;
 import calcium.terminal.MapFormatter;
 
 
@@ -18,6 +19,7 @@ public class Engine {
 		parser.registerFunction(new SineFunction());
 		parser.registerFunction(new CosineFunction());
 		parser.registerFunction(new TangentFunction());
+		parser.registerFunction(new SquareRootFunction());
 	}
 	
 	public void executeStatement(final String command) throws QuitException {

@@ -1,7 +1,7 @@
-package calcium.functions;
+package calcium.functions.trigonometry;
 
 
-public class CosineFunction extends TrigonometricFunctions {
+public final class CosineFunction extends TrigonometricFunction {
 	@Override
 	public String getName() {
 		return "cos";

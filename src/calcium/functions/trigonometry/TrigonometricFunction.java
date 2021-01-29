@@ -1,4 +1,4 @@
-package calcium.functions;
+package calcium.functions.trigonometry;
 
 import java.util.List;
 
@@ -6,9 +6,10 @@ import calcium.Fraction;
 import calcium.Parser;
 import calcium.TOKEN_TYPE;
 import calcium.Token;
+import calcium.functions.BuiltinFunction;
 
 
-public abstract class TrigonometricFunctions implements Function {
+public abstract class TrigonometricFunction extends BuiltinFunction {
 	@Override
 	public final int getParameterCount() {
 		return 1;
@@ -30,9 +31,4 @@ public abstract class TrigonometricFunctions implements Function {
 	}
 	
 	public abstract double getFunctionValue(double radians);
-	
-	@Override 
-	public final String toString() {
-		return "<builtin function>";
-	}
 }

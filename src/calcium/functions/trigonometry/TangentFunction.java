@@ -1,7 +1,7 @@
-package calcium.functions;
+package calcium.functions.trigonometry;
 
 
-public class TangentFunction extends TrigonometricFunctions {
+public final class TangentFunction extends TrigonometricFunction {
 	@Override
 	public String getName() {
 		return "tan";
