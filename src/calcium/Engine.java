@@ -2,8 +2,8 @@ package calcium;
 
 import calcium.exceptions.QuitException;
 import calcium.functions.Function;
-import calcium.functions.SquareRootFunction;
 import calcium.functions.UserDefinedFunctionFactory;
+import calcium.functions.misc.SquareRootFunction;
 import calcium.functions.trigonometry.CosineFunction;
 import calcium.functions.trigonometry.SineFunction;
 import calcium.functions.trigonometry.TangentFunction;

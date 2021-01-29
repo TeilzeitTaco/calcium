@@ -8,20 +8,30 @@ import calcium.Tokens;
 
 
 public abstract class MonadicOrDyadicOperator implements Operator {
+	private final TOKEN_TYPE leftConstraint, rightConstraint;
+	
 	private Token left, center, right;
 	private Tokens tokens;
 	private int position;
+	
+	public MonadicOrDyadicOperator(TOKEN_TYPE leftConstraint, TOKEN_TYPE rightConstraint) {
+		this.rightConstraint = rightConstraint;
+		this.leftConstraint = leftConstraint;
+	}
 
 	@Override
 	public boolean onPassOver(int position, Parser parser) {
 		tokens = parser.getTokens();
 		this.position = position;
 		
-		// Dyadic operator, "a ? b"
+		// Dyadic operator of the form "a ? b"
 		if (thereIsARightToken() && thereIsALeftToken()) {
-			findTokensForDyadicMinus();
-			if (leftAndRightAreBothValues()) {
+			findTokensForDyadicOperator();
+			if (leftAndRightBothMeetConstraints()) {
 				var resultingFraction = onDyadicConstraintMet(parser, left, center, right);
+				if (resultingFraction == null)
+					return false;
+				
 				tokens.set(position, new Token(TOKEN_TYPE.T_VALUE, resultingFraction));
 				consumeRightToken();
 				consumeLeftToken();
@@ -29,14 +39,17 @@ public abstract class MonadicOrDyadicOperator implements Operator {
 			}
 		}
 		
-		// Monadic operator "?a"
+		// Monadic operator of the form "?a"
 		if (thereIsARightToken()) {
-			findTokensForMondaicMinus();
+			findTokensForMondaicOperator();
 			if (thereIsALeftToken() && !left.getTokenType().isMathOperator())
 				return false;
 			
-			if (rightIsValue()) {
+			if (rightMeetsConstraint()) {
 				var resultingFraction = onMonadicConstraintMet(parser, center, right);
+				if (resultingFraction == null)
+					return false;
+				
 				tokens.set(position, new Token(TOKEN_TYPE.T_VALUE, resultingFraction));
 				consumeRightToken();
 				return true;
@@ -54,22 +67,22 @@ public abstract class MonadicOrDyadicOperator implements Operator {
 		return position > 0;
 	}
 	
-	private void findTokensForDyadicMinus() {
+	private void findTokensForDyadicOperator() {
 		left = tokens.get(position - 1);
-		findTokensForMondaicMinus();
+		findTokensForMondaicOperator();
 	}
 	
-	private void findTokensForMondaicMinus() {
+	private void findTokensForMondaicOperator() {
 		center = tokens.get(position);
 		right = tokens.get(position + 1);
 	}
 	
-	private boolean leftAndRightAreBothValues() {
-		return left.getTokenType() == TOKEN_TYPE.T_VALUE && rightIsValue();
+	private boolean leftAndRightBothMeetConstraints() {
+		return left.getTokenType() == leftConstraint && rightMeetsConstraint();
 	}
 	
-	private boolean rightIsValue() {
-		return right.getTokenType() == TOKEN_TYPE.T_VALUE;
+	private boolean rightMeetsConstraint() {
+		return right.getTokenType() == rightConstraint;
 	}
 	
 	private void consumeLeftToken() {

@@ -12,7 +12,7 @@ public class OperatorAssign extends DyadicOperator {
 	}
 
 	@Override
-	public Fraction onConstraintsMet(Parser parser, Token left, Token center, Token right) {
+	public Fraction onDyadicConstraintMet(Parser parser, Token left, Token center, Token right) {
 		var nameToAssignTo = left.getName();
 		var valueToAssign = right.getValue();
 		

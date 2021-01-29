@@ -1,4 +1,4 @@
-package calcium.functions;
+package calcium.functions.misc;
 
 import java.util.List;
 
@@ -6,6 +6,7 @@ import calcium.Fraction;
 import calcium.Parser;
 import calcium.TOKEN_TYPE;
 import calcium.Token;
+import calcium.functions.BuiltinFunction;
 
 
 public final class SquareRootFunction extends BuiltinFunction {

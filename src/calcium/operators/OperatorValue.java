@@ -12,7 +12,7 @@ public final class OperatorValue extends DyadicOperator {
 	}
 
 	@Override
-	public Fraction onConstraintsMet(Parser parser, Token left, Token center, Token right) {
+	public Fraction onDyadicConstraintMet(Parser parser, Token left, Token center, Token right) {
 		return center.getValue();
 	}
 }
