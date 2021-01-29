@@ -3,6 +3,7 @@ package calcium;
 import calcium.exceptions.QuitException;
 import calcium.functions.Function;
 import calcium.functions.UserDefinedFunctionFactory;
+import calcium.functions.misc.AbsFunction;
 import calcium.functions.misc.IsPrimeFunction;
 import calcium.functions.misc.RoundFunction;
 import calcium.functions.misc.SquareRootFunction;
@@ -25,6 +26,10 @@ public final class Engine {
 		parser.registerFunction(new SquareRootFunction());
 		parser.registerFunction(new RoundFunction());
 		parser.registerFunction(new IsPrimeFunction());
+		parser.registerFunction(new AbsFunction());
+		
+		parser.setVariable("pi", Fraction.fromDouble(Math.PI));
+		parser.setVariable("e", Fraction.fromDouble(Math.E));
 	}
 	
 	public void executeStatement(final String command) throws QuitException {

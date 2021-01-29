@@ -120,6 +120,10 @@ public final class Fraction {
 		return getObjectFromCache(-z, n);
 	}
 	
+	public Fraction abs() {
+		return getObjectFromCache(Math.abs(z), Math.abs(n));
+	}
+	
 	public double toDouble() {
 		return z / (double) n;
 	}
