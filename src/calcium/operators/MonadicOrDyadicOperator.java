@@ -42,7 +42,7 @@ public abstract class MonadicOrDyadicOperator implements Operator {
 		// Monadic operator of the form "?a"
 		if (thereIsARightToken()) {
 			findTokensForMondaicOperator();
-			if (thereIsALeftToken() && !left.getTokenType().isMathOperator())
+			if (thereIsALeftToken() && !left.getTokenType().isMonadicInsignificant())
 				return false;
 			
 			if (rightMeetsConstraint()) {

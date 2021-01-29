@@ -104,10 +104,9 @@ public final class Parser {
 		changed = true;
 		while (changed) {
 			changed = false;
+			processAllPrecedenceLevels();
 			if (verbose)
 				System.out.println(tokens);
-			
-			processAllPrecedenceLevels();
 		}
 			
 		checkThatResultingTokenIsAValue();
@@ -127,6 +126,9 @@ public final class Parser {
 				var operator = tokenType.getOperator();
 				if (operator == null)
 					continue;
+				
+				if (verbose)
+					System.out.println(operator);
 
 				if (changed = operator.onPassOver(position, this))
 					return;
