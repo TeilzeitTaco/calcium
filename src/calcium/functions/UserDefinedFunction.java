@@ -3,15 +3,15 @@ package calcium.functions;
 import java.util.List;
 import calcium.Fraction;
 import calcium.Parser;
-import calcium.Token;
+import calcium.Tokens;
 
 
 public class UserDefinedFunction implements Function {
 	private final List<String> parameterNames;
-	private final List<Token> functionTokens;
+	private final Tokens functionTokens;
 	private final String name;
 	
-	public UserDefinedFunction(String name, List<String> parameterNames, List<Token> functionTokens) {
+	public UserDefinedFunction(String name, List<String> parameterNames, Tokens functionTokens) {
 		this.parameterNames = parameterNames;
 		this.functionTokens = functionTokens;
 		this.name = name;
@@ -40,7 +40,7 @@ public class UserDefinedFunction implements Function {
 	
 	@Override
 	public String toString() {
-		return "%s%s = ".formatted(name, parameterNames)
+		return "%s%s = %s".formatted(name, parameterNames, functionTokens)
 				.replace('[', '(')
 				.replace(']', ')');
 	}

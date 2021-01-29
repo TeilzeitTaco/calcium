@@ -16,39 +16,25 @@ public final class Tokenizer {
 	private static final Pattern pattern = Pattern.compile("(" + digitsRegex + "|" + nameRegex + "|.)");
 	
 	private LinkedList<String> stringTokenQueue;
-	private LinkedList<Token> tokenQueue;
+	private Tokens tokenQueue;
 	
-	public LinkedList<Token> tokenize(final String command) {
+	public Tokens tokenize(final String command) {
 		stringTokenQueue = splitCommandIntoStringTokens(command);
-		tokenQueue = new LinkedList<Token>();
+		tokenQueue = new Tokens();
 		
-		while(!stringTokenQueue.isEmpty()) {
+		stringTokenLoop: while(!stringTokenQueue.isEmpty()) {
 			var stringToken = stringTokenQueue.removeFirst().trim();
 			if ("".equals(stringToken))
 				continue;
 			
-			else if ("+".equals(stringToken))
-				tokenQueue.add(new Token(TOKEN_TYPE.T_ADD));
-
-			else if ("-".equals(stringToken))
-				tokenQueue.add(new Token(TOKEN_TYPE.T_SUB));
+			for (var tokenType : TOKEN_TYPE.values()) {
+				if (tokenType.getLiteral().equals(stringToken)) {
+					tokenQueue.add(new Token(tokenType));
+					continue stringTokenLoop;
+				}
+			}
 			
-			else if ("*".equals(stringToken))
-				tokenQueue.add(new Token(TOKEN_TYPE.T_MUL));
-						
-			else if ("/".equals(stringToken))
-				tokenQueue.add(new Token(TOKEN_TYPE.T_DIV));
-						
-			else if ("(".equals(stringToken))
-				tokenQueue.add(new Token(TOKEN_TYPE.T_BRACE_LEFT));
-			
-			else if (")".equals(stringToken))
-				tokenQueue.add(new Token(TOKEN_TYPE.T_BRACE_RIGHT));
-			
-			else if ("=".equals(stringToken))
-				tokenQueue.add(new Token(TOKEN_TYPE.T_ASSIGN));
-			
-			else if (stringToken.matches(nameRegex))
+			if (stringToken.matches(nameRegex))
 				tokenQueue.add(new Token(TOKEN_TYPE.T_NAME, stringToken));
 			
 			else if (stringToken.matches(digitsRegex))

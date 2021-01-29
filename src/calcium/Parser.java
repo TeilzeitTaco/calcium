@@ -13,7 +13,7 @@ public final class Parser {
 	private final Map<String, Fraction> variables = new HashMap<>();
 	private final Map<String, Function> functions = new HashMap<>();
 	
-	private LinkedList<Token> tokens;
+	private Tokens tokens;
 	private boolean changed;
 	private int position;
 	
@@ -95,7 +95,7 @@ public final class Parser {
 		function.call(this, argumentList);
 	}
 	
-	public Fraction parse(LinkedList<Token> tokens) {
+	public Fraction parse(Tokens tokens) {
 		this.tokens = tokens;
 
 		changed = true;
