@@ -14,7 +14,7 @@ public final class Parser {
 	private final Map<String, Function> functions = new HashMap<>();
 	
 	private Tokens tokens;
-	private boolean changed;
+	private boolean changed, verbose;
 	private int position;
 	
 	public LinkedList<Token> getTokens() {
@@ -31,6 +31,10 @@ public final class Parser {
 	
 	public void setVariable(String name, Fraction value) {
 		variables.put(name, value);
+	}
+	
+	public void setVerbose(boolean verbose) {
+		this.verbose = verbose;
 	}
 	
 	public Map<String, Fraction> getVariables() {
@@ -101,6 +105,9 @@ public final class Parser {
 		changed = true;
 		while (changed) {
 			changed = false;
+			if (verbose)
+				System.out.println(tokens);
+			
 			processAllPrecedenceLevels();
 		}
 			
@@ -136,8 +143,7 @@ public final class Parser {
 	}
 	
 	private void checkThatResultingTokenIsAValue() {
-		var resultingToken = tokens.getFirst();
-		if (resultingToken.getTokenType() != TOKEN_TYPE.T_VALUE)
+		if (tokens.size() > 1 || tokens.getFirst().getTokenType() != TOKEN_TYPE.T_VALUE)
 			throw new IllegalArgumentException("Parser Error: invalid result"); 
 	}
 }

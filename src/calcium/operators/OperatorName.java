@@ -30,7 +30,7 @@ public class OperatorName implements Operator {
 			}
 		}
 
-		// Resolve as a variable
+		// Resolve as a variable.
 		var resolvedFraction = parser.getVariable(name);
 		tokens.set(position, new Token(TOKEN_TYPE.T_VALUE, resolvedFraction));
 		return true;

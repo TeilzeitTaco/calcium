@@ -17,11 +17,12 @@ public final class Terminal {
 				"| Developed by Flesh-Network developers (2021) |\n" +
 				"+----------------------------------------------+\n" +
 				"| Sytax:                                       |\n" +
-				"|  * frac  - Display results as fractions      |\n" +
-				"|  * dec   - Display results as decimals       |\n" +
-				"|  * vars  - Show all variables                |\n" +
-				"|  * funcs - Show registered functions         |\n" +
-				"|  * quit  - Quit the program                  |\n" +
+				"|  * frac    - Display results as fractions    |\n" +
+				"|  * dec     - Display results as decimals     |\n" +
+				"|  * vars    - Show all variables              |\n" +
+				"|  * funcs   - Show registered functions       |\n" +
+				"|  * verbose - Show expansion                  |\n" +
+				"|  * quit    - Quit the program                |\n" +
 				"+----------------------------------------------+\n");
 		
 		try {

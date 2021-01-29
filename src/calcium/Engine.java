@@ -34,6 +34,9 @@ public class Engine {
 		else if ("frac".equals(lowercaseCommand))
 			showResultAsDecimal = false;
 		
+		else if ("verbose".equals(lowercaseCommand))
+			parser.setVerbose(true);
+		
 		else if ("vars".equals(lowercaseCommand)) {
 			var formatter = new MapFormatter<String, Fraction>(parser.getVariables());
 			System.out.println(formatter);
