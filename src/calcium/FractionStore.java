@@ -12,7 +12,7 @@ import java.util.WeakHashMap;
  * 
  * @author SeiJ
  */
-public class FractionStore {
+public final class FractionStore {
 	private final Set<Fraction> objectCache = Collections.newSetFromMap(new WeakHashMap<Fraction, Boolean>());
 	
 	private static long euclid(long a, long b) {

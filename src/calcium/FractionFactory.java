@@ -5,8 +5,11 @@ import java.util.Locale;
 
 
 
-public class FractionFactory {
+public final class FractionFactory {
 	private static FractionStore fractionStore = new FractionStore();
+	
+	private FractionFactory() {
+	}
 	
 	private static int getDecimalPlacesCount(final double d) {
 		var numberFormat = NumberFormat.getInstance(Locale.ENGLISH);
