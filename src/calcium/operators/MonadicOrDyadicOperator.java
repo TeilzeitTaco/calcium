@@ -10,6 +10,7 @@ import calcium.Tokens;
 public abstract class MonadicOrDyadicOperator implements Operator {
 	private final TOKEN_TYPE leftConstraint, rightConstraint;
 	
+	private Fraction resultingFraction;
 	private Token left, center, right;
 	private Tokens tokens;
 	private int position;
@@ -28,11 +29,11 @@ public abstract class MonadicOrDyadicOperator implements Operator {
 		if (thereIsARightToken() && thereIsALeftToken()) {
 			findTokensForDyadicOperator();
 			if (leftAndRightBothMeetConstraints()) {
-				var resultingFraction = onDyadicConstraintMet(parser, left, center, right);
+				resultingFraction = onDyadicConstraintMet(parser, left, center, right);
 				if (resultingFraction == null)
 					return false;
 				
-				tokens.set(position, new Token(TOKEN_TYPE.T_VALUE, resultingFraction));
+				insertResultingToken();
 				consumeRightToken();
 				consumeLeftToken();
 				return true;
@@ -46,11 +47,11 @@ public abstract class MonadicOrDyadicOperator implements Operator {
 				return false;
 			
 			if (rightMeetsConstraint()) {
-				var resultingFraction = onMonadicConstraintMet(parser, center, right);
+				resultingFraction = onMonadicConstraintMet(parser, center, right);
 				if (resultingFraction == null)
 					return false;
 				
-				tokens.set(position, new Token(TOKEN_TYPE.T_VALUE, resultingFraction));
+				insertResultingToken();
 				consumeRightToken();
 				return true;
 			}
@@ -83,6 +84,10 @@ public abstract class MonadicOrDyadicOperator implements Operator {
 	
 	private boolean rightMeetsConstraint() {
 		return right.getTokenType() == rightConstraint;
+	}
+	
+	private void insertResultingToken() {
+		tokens.set(position, new Token(TOKEN_TYPE.T_VALUE, resultingFraction));
 	}
 	
 	private void consumeLeftToken() {
