@@ -37,13 +37,11 @@ public enum TOKEN_TYPE {
 	}
 	
 	public boolean isMonadicInsignificant() {
-		// ( value ) - var | dont apply monad
-		//   value   - var | dont apply monad
-		//    var    - var | dont apply monad
-		// ( -var )        |      apply monad
+		// ( value ) ? var | dont apply monad
+		//   value   ? var | dont apply monad
+		// ( ?var )        |      apply monad
 		return !(
 				this == T_BRACE_RIGHT ||
-				this == T_VALUE ||
-				this == T_NAME);
+				this == T_VALUE);
 	}
 }
