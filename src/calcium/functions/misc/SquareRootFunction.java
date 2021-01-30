@@ -3,6 +3,7 @@ package calcium.functions.misc;
 import java.util.List;
 
 import calcium.Fraction;
+import calcium.FractionFactory;
 import calcium.Parser;
 import calcium.TOKEN_TYPE;
 import calcium.Token;
@@ -28,7 +29,7 @@ public final class SquareRootFunction extends BuiltinFunction {
 		var parameterDouble = arguments.get(0).toDouble();
 		var squareRoot = Math.sqrt(parameterDouble);
 		
-		var newFraction = Fraction.fromDouble(squareRoot);
+		var newFraction = FractionFactory.fromDouble(squareRoot);
 		var newValueToken = new Token(TOKEN_TYPE.T_VALUE, newFraction);
 		
 		parserTokens.add(position, newValueToken);

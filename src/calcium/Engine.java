@@ -28,8 +28,8 @@ public final class Engine {
 		parser.registerFunction(new IsPrimeFunction());
 		parser.registerFunction(new AbsFunction());
 		
-		parser.setVariable("pi", Fraction.fromDouble(Math.PI));
-		parser.setVariable("e", Fraction.fromDouble(Math.E));
+		parser.setVariable("pi", FractionFactory.fromDouble(Math.PI));
+		parser.setVariable("e", FractionFactory.fromDouble(Math.E));
 	}
 	
 	public void executeStatement(final String command) throws QuitException {

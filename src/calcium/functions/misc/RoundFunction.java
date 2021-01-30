@@ -3,6 +3,7 @@ package calcium.functions.misc;
 import java.util.List;
 
 import calcium.Fraction;
+import calcium.FractionFactory;
 import calcium.Parser;
 import calcium.TOKEN_TYPE;
 import calcium.Token;
@@ -28,7 +29,7 @@ public final class RoundFunction extends BuiltinFunction {
 		var parameterDouble = arguments.get(0).toDouble();
 		var roundedDouble = Math.round(parameterDouble);
 		
-		var newFraction = Fraction.fromDouble(roundedDouble);
+		var newFraction = FractionFactory.fromDouble(roundedDouble);
 		var newValueToken = new Token(TOKEN_TYPE.T_VALUE, newFraction);
 		
 		parserTokens.add(position, newValueToken);

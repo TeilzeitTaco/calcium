@@ -3,6 +3,7 @@ package calcium.functions.misc;
 import java.util.List;
 
 import calcium.Fraction;
+import calcium.FractionFactory;
 import calcium.Parser;
 import calcium.TOKEN_TYPE;
 import calcium.Token;
@@ -29,7 +30,7 @@ public final class IsPrimeFunction extends BuiltinFunction {
 		var roundedDouble = Math.round(parameterDouble);
 		var doubleIndicatingIfPrime = isPrimeNumber(roundedDouble);
 		
-		var newFraction = Fraction.fromDouble(doubleIndicatingIfPrime);
+		var newFraction = FractionFactory.fromDouble(doubleIndicatingIfPrime);
 		var newValueToken = new Token(TOKEN_TYPE.T_VALUE, newFraction);
 		
 		parserTokens.add(position, newValueToken);
