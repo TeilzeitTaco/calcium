@@ -17,8 +17,7 @@ public final class FractionStore {
 	
 	private static long euclid(long a, long b) {
 		// https://de.wikipedia.org/wiki/Euklidischer_Algorithmus
-		if (b == 0) return a;
-		return euclid(b, a % b);
+		return (b == 0) ? a : euclid(b, a % b);
 	}
 	
 	/**
